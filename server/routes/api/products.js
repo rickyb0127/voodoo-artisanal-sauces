@@ -30,12 +30,12 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //GET
 router.get("/", (req, res) => {
-  Product.find({}, function (error, users) {
+  Product.find({}, function (error, products) {
     if (error) {
       console.error(error);
     } else {
       res.send({
-        users
+        products
       });
     }
   });
@@ -43,14 +43,15 @@ router.get("/", (req, res) => {
 
 //POST
 router.post("/", (req, res) => {
-  var new_user = new Product({
+  console.log(req.body.name);
+  var new_product = new Product({
     name: req.body.name,
     price: req.body.price,
     quantity: req.body.quantity,
     photo: req.body.photo
   });
 
-  new_user.save(function (error) {
+  new_product.save(function (error) {
     if (error) {
       console.log(error);
     } else {

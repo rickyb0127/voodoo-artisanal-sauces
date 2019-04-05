@@ -10,12 +10,12 @@ app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-const users = require("./routes/api/users");
+const products = require("./routes/api/products");
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/public/"));
 }
 
-app.use("/api/users", users);
+app.use("/api/products", products);
 
 app.listen(process.env.PORT || 8081);
